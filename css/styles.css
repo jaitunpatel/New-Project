@@ -177,12 +177,12 @@ body, html {
   .slider-container {
     width: 100%;
     max-width: 1200px;
-    padding: 0 20px; /* Use padding instead of margin */
+    padding: 0 20px;
     text-align: center;
-    flex-grow: 1; /* Allow this to take up remaining space */
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
+    justify-content: center;
   }
 
   .slider-container h6 {
