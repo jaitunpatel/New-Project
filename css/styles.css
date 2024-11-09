@@ -1,0 +1,200 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Navigation Bar styles */
+  .navbar {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 40px;
+  }
+  
+  .placeholders {
+    display: flex;
+    gap: 15px;
+    margin-right: 40px;
+  }
+  /* ----------------------------- */
+  
+  /* Landing page styles */
+  .beginButton {
+    background-color: #538373;
+    color: white;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: 50px;
+    text-decoration: none;
+    margin-left: 40px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .beginButton:hover {
+    background-color: #2A695C;
+    transform: scale(1.05);
+  }
+  
+  .landing-page {
+    background-color: #e6e8dd;
+    height: calc(100vh - 50px);
+    display: flex;
+  }
+
+  .landing-page .content {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .landing-page h1 {
+    color: black;
+    letter-spacing: 0.1px;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 1.2;
+    margin-left: 40px;
+  }
+  
+  .landing-page p {
+    color: black;
+    letter-spacing: 0.1px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 50px;
+    margin-left: 40px;
+  }
+
+  .image-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .landing-image {
+    max-width: 70%;
+    height: auto;
+    object-fit: contain;
+  }
+  /* ----------------------------- */
+
+  /* Restrictions page styles */
+  .nextButton {
+    background-color: #538373;
+    color: white;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: 42px;
+    margin-left: 40px;
+    margin-top: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .nextButton:hover {
+    background-color: #2A695C;
+    transform: scale(1.05);
+  }
+
+  .restrictions-page {
+    background-color: #e6e8dd;
+    height: calc(100vh - 50px);
+    display: flex;
+  }
+
+  .restrictions-page .content {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  /* ----------------------------- */
+
+  /* Filters page styles */
+  .showAvailableButton {
+    background-color: #538373;
+    color: white;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: 206px;
+    text-decoration: none;
+    display: inline-flex;
+    margin-left: 40px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .showAvailableButton:hover {
+    background-color: #2A695C;
+    transform: scale(1.05);
+  }
+
+  .filters-page .content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .filters-page {
+    background-color: #e6e8dd;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .filters-page h1 {
+    color: black;
+    letter-spacing: 0.1px;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 1.2;
+    margin-left: 55px;
+    margin: 20px 0 20px 55px;
+  }
+
+  .slider-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px; /* Use padding instead of margin */
+    text-align: center;
+    flex-grow: 1; /* Allow this to take up remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+  }
+
+  .slider-container h6 {
+      margin-bottom: 15px;
+  }
+
+  .slider {
+    width: 80%;
+    margin: 0 auto 10px;
+  }
+
+  .slider-value {
+    margin-top: 10px;
+  }
+  /* ----------------------------- */
