@@ -19,7 +19,7 @@ function renderLandingPage() {
         <img src="images/landing.png" alt="Landing Page Image" class="landing-image">
       </div>
     </div>
-    
+
     <!-- ModalStructure -->
     <div class="modal" id="modal" style="display: none;">
       <div class="modal-content">
@@ -43,13 +43,13 @@ function renderLandingPage() {
     loadRestrictionsPageContent();
   });
 
-
   const closeModal = document.getElementById('closeModal');
   closeModal.addEventListener('click', function() {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
   });
 }
+
 
 function loadRestrictionsPageContent() {
   const modalContent = document.getElementById('modalContent');
@@ -83,18 +83,19 @@ function loadRestrictionsPageContent() {
             <h4>Price Range</h4>
             <div id="priceRange" class="slider"></div>
             <p class="slider-value" id="priceValue">$0 - $100</p>
-    
+
             <h4>Calorie Range</h4>
             <div id="calorieRange" class="slider"></div>
             <p class="slider-value" id="calorieValue">0 - 1000 cal</p>
-    
+
             <h4>Portion Size</h4>
             <div id="portionSize" class="slider"></div>
             <p class="slider-value" id="portionValue">0 - 20 oz</p>
           </div>
         </div>
-        <div class="content">
-          <a href="#/menus" class="showAvailableButton">SHOW AVAILABLE MENUS</a>
+        <div class="buttons-container">
+          <button id="resetButton" class="button reset-button">RESET FILTERS</button>
+          <a href="#/menus" class="button showAvailableButton">SHOW AVAILABLE MENUS</a>
         </div>
       </div>
     `;
@@ -103,18 +104,26 @@ function loadRestrictionsPageContent() {
     const backButton = document.getElementById('backButton');
     backButton.addEventListener('click', loadRestrictionsPageContent);
   
-    // Initialize noUiSliders
-    initializeRangeSlider('priceRange', 0, 100, [0, 100], 'priceValue', '$');
-    initializeRangeSlider('calorieRange', 0, 1000, [0, 1000], 'calorieValue', ' cal');
-    initializeRangeSlider('portionSize', 0, 20, [0, 20], 'portionValue', ' oz');
+    // Add event listener to the reset button
+    const resetButton = document.getElementById('resetButton');
+    resetButton.addEventListener('click', resetFilters);
+  
+    // Initialize noUiSliders with localStorage values
+    initializeRangeSlider('priceRange', 0, 100, [0, 100], 'priceValue', '$', 'priceRangeValues');
+    initializeRangeSlider('calorieRange', 0, 1000, [0, 1000], 'calorieValue', ' cal', 'calorieRangeValues');
+    initializeRangeSlider('portionSize', 0, 20, [0, 20], 'portionValue', ' oz', 'portionSizeValues');
   }
   
-  function initializeRangeSlider(id, min, max, start, valueElementId, unit) {
+  function initializeRangeSlider(id, min, max, start, valueElementId, unit, storageKey) {
     const slider = document.getElementById(id);
     const valueElement = document.getElementById(valueElementId);
   
+    // Load saved values from localStorage if available
+    const savedValues = localStorage.getItem(storageKey);
+    const initialValues = savedValues ? JSON.parse(savedValues) : start;
+  
     noUiSlider.create(slider, {
-      start: start,
+      start: initialValues,
       connect: true,
       range: {
         min: min,
@@ -132,6 +141,16 @@ function loadRestrictionsPageContent() {
   
     slider.noUiSlider.on('update', function (values, handle) {
       valueElement.innerHTML = values.join(' - ');
+      localStorage.setItem(storageKey, JSON.stringify(values));
     });
   }
+  
+  function resetFilters() {
+    localStorage.removeItem('priceRangeValues');
+    localStorage.removeItem('calorieRangeValues');
+    localStorage.removeItem('portionSizeValues');
+  
+    loadFiltersPageContent();
+  }
+  
 }

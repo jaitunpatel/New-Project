@@ -175,6 +175,7 @@ body, html {
   /* ----------------------------- */
 
   /* Filters page styles */
+  .reset-button,
   .showAvailableButton {
     background-color: #538373;
     color: white;
@@ -184,14 +185,27 @@ body, html {
     width: 206px;
     text-decoration: none;
     display: inline-flex;
-    margin-left: 40px;
-    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 14px; /* Adjust as needed */
   }
   
+  .reset-button:hover,
   .showAvailableButton:hover {
     background-color: #2A695C;
     transform: scale(1.05);
+  }
+
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 20px;
+    width: 100%;
   }
 
   .filters-page {
@@ -218,22 +232,24 @@ body, html {
   
   .slider-container {
     width: 100%;
-    max-width: 1200px;
-    padding: 0 20px;
+    padding: 0;
     text-align: center;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
   
   .slider-wrapper {
     margin-bottom: 20px;
+    width: 150%;
+    max-width: 1000px;
   }
+  
   
   .slider-wrapper h4 {
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
   }
   
   .slider {
