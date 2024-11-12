@@ -112,6 +112,18 @@ function loadRestrictionsPageContent() {
     initializeRangeSlider('priceRange', 0, 100, [0, 100], 'priceValue', '$', 'priceRangeValues');
     initializeRangeSlider('calorieRange', 0, 1000, [0, 1000], 'calorieValue', ' cal', 'calorieRangeValues');
     initializeRangeSlider('portionSize', 0, 20, [0, 20], 'portionValue', ' oz', 'portionSizeValues');
+  
+    const homeButton = document.getElementById('homeButton');
+    homeButton.addEventListener('click', function() {
+      renderLandingPage();
+    });
+    
+    const showAvailableMenusButton = document.querySelector('.showAvailableButton');
+    showAvailableMenusButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      setFiltersCompleted(true);
+      window.location.hash = '#/menus';
+    });
   }
   
   function initializeRangeSlider(id, min, max, start, valueElementId, unit, storageKey) {

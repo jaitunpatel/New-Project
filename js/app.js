@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     function router() {
       const hash = window.location.hash;
-      if (hash === '#/restrictions') {
-        renderRestrictionsPage();
-      } else if (hash === '#/filters') {
-        renderFiltersPage();
+      if (hash === '#/menus') {
+        renderMenusPage();
       } else {
         renderLandingPage();
       }
