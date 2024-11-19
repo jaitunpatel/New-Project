@@ -452,4 +452,153 @@ body, html {
     background-color: #4caf50;
     color: white;
   }
+
+  .cart-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.2em;
+  }
+  
+  .cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 95vh;
+    background: #ffffff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 40px 20px 20px 20px; /* Increased padding-top to make room for the close button */
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .cart-drawer:not(.hidden) {
+    transform: translateX(0);
+  }
+  
+  .cart-drawer.hidden {
+    transform: translateX(100%);
+  }
+  
+  .cart-drawer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .cart-drawer .cart-item {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+  }
+
+  .cart-drawer .cart-item:first-child {
+    margin-top: 40px;
+  }
+
+  .cart-item span {
+    font-size: 1rem;
+  }
+  
+  .cart-drawer .subtotal {
+    margin-top: 10px;
+    padding-top: 1rem;
+    border-top: 2px solid #ddd;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    display: block;
+  }
+  
+  .overlay.hidden {
+    display: none;
+  }
+
+  .cart-close-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+  
+  .cart-close-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-close-button svg {
+    fill: #5f6368;
+  }
+
+  .cart-close-button-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 200px; 
+  }
+  
+  .cart-close-button {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+  
+  .cart-close-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-close-button svg {
+    fill: #5f6368;
+  }
+  
+  .clear-cart-button {
+    background-color: #f44336;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+    height: 40px;
+    width: 130px;
+  }
+  
+  .clear-cart-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .clear-cart-button:active {
+    background-color: #b71c1c; /
+  }
+  
   /* ----------------------------- */
