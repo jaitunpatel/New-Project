@@ -13,11 +13,12 @@ function renderMenusPage() {
       </div>
     </div>
     <div class="landing-page menu-page">
-      <div class="content">
-        <h2>Our Popular Menu</h2>
-      </div>
-      <div id="menusList" class="menus-list">
-        <!-- Menu items will be inserted here dynamically -->
+      <div class="menu-slider">
+        <button id="leftArrow" class="slider-arrow left-arrow">&lt;</button>
+        <div id="menusList" class="menus-list">
+          <!-- Menu items will be inserted here dynamically -->
+        </div>
+        <button id="rightArrow" class="slider-arrow right-arrow">&gt;</button>
       </div>
     </div>
     <div id="overlay" class="overlay hidden"></div>
@@ -38,12 +39,12 @@ function renderMenusPage() {
   `;
 
   const menus = [
-    { name: "Hamburger Street Food Seafood Fast Food", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
+    { name: "Hamburger Street ", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
     { name: "Poke bowl", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
     { name: "Bowl", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
     { name: "Indian", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
     { name: "Chinese", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
-    { name: "Ham Fast Food Sausage European Cuisine", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
+    { name: "Ham Fast Food ", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
   ];
 
   const menusList = document.getElementById('menusList');
@@ -54,6 +55,8 @@ function renderMenusPage() {
   const overlay = document.getElementById('overlay');
   const clearCartButton = document.getElementById('clearCartButton');
   const cartSubtotalLabel = document.getElementById('cartSubtotalLabel');
+  
+  let currentIndex = 0;
 
   // Render menu items
   menus.forEach(menu => {
@@ -93,6 +96,33 @@ function renderMenusPage() {
       updateCart();
     });
   });
+
+  
+
+  const updateSlider = () => {
+    const newTransformValue = -(currentIndex * 33.33);
+    menusList.style.transform = `translateX(${newTransformValue}%)`;
+  };
+
+  document.getElementById('leftArrow').addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex -= 1;
+      updateSlider();
+    }
+  });
+  
+  document.getElementById('rightArrow').addEventListener('click', () => {
+    if (currentIndex < menus.length - 3) {
+      currentIndex += 1;
+      updateSlider();
+    }
+  });
+  
+
+  updateSlider();
+
+  document.getElementById('leftArrow').style.left = '-10px';
+  document.getElementById('rightArrow').style.right = '-10px';
 
   // Cart interactions
   document.getElementById('cartIcon').addEventListener('click', () => {
