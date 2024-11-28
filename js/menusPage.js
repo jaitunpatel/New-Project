@@ -22,8 +22,7 @@ function renderMenusPage() {
               <span class="breadcrumb-separator">&gt;</span>
               <a href="#/checkout" class="breadcrumb-item">Checkout</a>
           </nav>
-      </div>
-
+    </div>
       <div class="menu-slider">
           <button id="leftArrow" class="slider-arrow left-arrow">&lt;</button>
           <div id="menusList" class="menus-list">
@@ -31,7 +30,7 @@ function renderMenusPage() {
           </div>
           <button id="rightArrow" class="slider-arrow right-arrow">&gt;</button>
       </div>
-  </div>
+    </div>
 
   <div id="overlay" class="overlay hidden"></div>
   <div id="cartDrawer" class="cart-drawer hidden">

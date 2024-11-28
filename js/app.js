@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function router() {
     const hash = window.location.hash;
-    if (hash === '#/menus') {
+    if (hash === '#/allmenus') {
+      renderAllMenusPage();
+    }
+    else if (hash === '#/menus') {
       renderMenusPage();
       updateBreadcrumb('#/menus');
     }

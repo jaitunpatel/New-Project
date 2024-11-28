@@ -4,7 +4,7 @@ function renderLandingPage() {
     <div class="navbar">
       <div class="logo">Logo</div>
       <div class="placeholders">
-        <span>Placeholder 1</span>
+        <a href="#/allmenus" class="menu-button">MENU</a>
         <span>Placeholder 2</span>
         <span>Placeholder 3</span>
       </div>
