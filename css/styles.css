@@ -656,3 +656,129 @@ body, html {
   }
   
   /* ----------------------------- */
+
+  /*Checkout page styles*/
+
+  .checkoutButton {
+    background-color: #538373;
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;  
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: 60%;
+    height: 40px;
+    text-decoration: none;
+    margin-left: 40px;
+    margin-top: 20px;
+    position: absolute; 
+    bottom: 10%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .checkoutButton:hover {
+    background-color: #2A695C;
+    transform: scale(1.05);
+  }
+
+  .checkoutContainer {
+    display: flex;
+  }
+
+  .checkoutItems {
+    position: relative;
+    width: 20%;
+    height: 95vh;
+    background: #ffffff;
+    margin: 0 auto;
+    margin-right: 20%;
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  .checkoutItems .cart-item {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+  }
+
+  .checkoutItems .cart-item:first-child {
+    margin-top: 40px;
+  }
+
+  .checkoutItems span {
+    font-size: 1rem;
+  }
+
+  .checkoutItems .subtotal {
+    margin-top: 10px;
+    padding-top: 1rem;
+    border-top: 2px solid #ddd;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .checkoutPageButton {
+    background-color: #538373;
+    color: white;
+    font-weight: 400;
+    font-size: 25px;
+    text-align: center;
+    line-height: 40px;  
+    border-radius: 25px;
+    padding: 10px 20px;
+    width: 60%;
+    height: 40px;
+    margin: 0 auto;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .checkoutPageButton:hover {
+    background-color: #2A695C;
+    transform: scale(1.05);
+  }
+
+  .info {
+    display: inline-flex;
+    width: 100%;
+  }
+  .row {
+    display: table;
+    margin-left: -16px;
+    width: 100%;
+  }
+  
+  .col-50 {
+    float: left;
+    width: 20%;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .leftCol {
+    margin-left: 20%;
+  }
+  
+  input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: block;
+  }

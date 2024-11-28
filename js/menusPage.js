@@ -35,6 +35,7 @@ function renderMenusPage() {
       <div class="subtotal">
         <strong id="cartSubtotalLabel">Subtotal:</strong> <span id="cartSubtotal">0.00</span>
       </div>
+      <a href="#/checkout" class="button checkoutButton">Checkout</a>
     </div>
   `;
 
@@ -97,7 +98,11 @@ function renderMenusPage() {
     });
   });
 
-  
+  const checkOutButton = document.querySelector('.checkoutButton');
+  checkOutButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.href = '#/checkout';
+  });
 
   const updateSlider = () => {
     const newTransformValue = -(currentIndex * 33.33);
