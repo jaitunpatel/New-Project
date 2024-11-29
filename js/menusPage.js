@@ -6,9 +6,9 @@ function renderMenusPage() {
     <div class="navbar">
       <div class="logo">Logo</div>
       <div class="placeholders">
-        <span>Placeholder 1</span>
-        <span>Placeholder 2</span>
-        <span>Placeholder 3</span>
+        <a href="#/allmenus" class="menu-button">MENU</a>
+        <a href="#/offers" class="menu-button">OFFERS</a>
+        <a href="#/reviews" class="menu-button">REVIEWS</a>
         <button id="cartIcon" class="cart-icon">
           <span class="material-icons">shopping_cart</span>
           <span id="cartCount">0</span>

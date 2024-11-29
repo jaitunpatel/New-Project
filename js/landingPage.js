@@ -1,12 +1,32 @@
 function renderLandingPage() {
   const app = document.getElementById('app');
+
+  function updateMenuButton() {
+    const currentPage = window.location.hash;
+    const isAllMenusPage = currentPage === '#/allmenus';
+  
+    const menuButton = document.querySelector('.menu-button');
+    if (menuButton) {
+      if (isAllMenusPage) {
+        menuButton.classList.add('active');
+      } else {
+        menuButton.classList.remove('active');
+      }
+    }
+  }
+  
+  updateMenuButton();
+  
+  window.addEventListener('hashchange', updateMenuButton);
+  
+  // Update the inner HTML
   app.innerHTML = `
     <div class="navbar">
       <div class="logo">Logo</div>
       <div class="placeholders">
         <a href="#/allmenus" class="menu-button">MENU</a>
-        <span>Placeholder 2</span>
-        <span>Placeholder 3</span>
+        <a href="#/offers" class="menu-button">OFFERS</a>
+        <a href="#/reviews" class="menu-button">REVIEWS</a>
       </div>
     </div>
     <div class="landing-page">
@@ -19,8 +39,6 @@ function renderLandingPage() {
         <img src="images/landing.png" alt="Landing Page Image" class="landing-image">
       </div>
     </div>
-
-    <!-- ModalStructure -->
     <div class="modal" id="modal" style="display: none;">
       <div class="modal-content">
         <button id="closeModal" class="browser-style-close-button">

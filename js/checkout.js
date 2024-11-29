@@ -5,9 +5,9 @@ function renderCheckoutPage() {
         <div class="navbar">
             <div class="logo">Logo</div>
             <div class="placeholders">
-                <span>Placeholder 1</span>
-                <span>Placeholder 2</span>
-                <span>Placeholder 3</span>
+                <a href="#/allmenus" class="menu-button">MENU</a>
+                <a href="#/offers" class="menu-button">OFFERS</a>
+                <a href="#/reviews" class="menu-button">REVIEWS</a>
             </div>
         </div>
         <div class="landing-page menu-page-container">

@@ -5,8 +5,8 @@ function renderAllMenusPage() {
     <div class="logo">Logo</div>
     <div class="placeholders">
       <a href="#/allmenus" class="menu-button">MENU</a>
-      <span>Placeholder 2</span>
-      <span>Placeholder 3</span>
+      <a href="#/offers" class="menu-button">OFFERS</a>
+      <a href="#/reviews" class="menu-button">REVIEWS</a>
       <button id="cartIcon" class="cart-icon">
         <span class="material-icons">shopping_cart</span>
         <span id="cartCount">0</span>

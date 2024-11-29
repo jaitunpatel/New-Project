@@ -980,3 +980,30 @@ body, html {
   .checkout-container .breadcrumb-item.current-page {
     color: #999;
   }
+
+  /*MENU button Navigation bar styles */
+  .menu-button {
+    font-size: 17px;
+    font-weight: 600;
+    color: #538373;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .menu-button:hover {
+    color: #2c3e50;
+  }
+  
+  .menu-button:active {
+    color: #2c3e50;
+  }
+  
+  .menu-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5); 
+  }
+  
+  .menu-button.active {
+    color: #2A695C;
+  }
