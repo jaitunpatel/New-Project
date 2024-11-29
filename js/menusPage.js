@@ -2,35 +2,35 @@ function renderMenusPage() {
   const app = document.getElementById('app');
   app.innerHTML = `
   <div class="navbar">
-      <div class="logo">Logo</div>
-      <div class="placeholders">
-          <span>Placeholder 1</span>
-          <span>Placeholder 2</span>
-          <span>Placeholder 3</span>
-          <button id="cartIcon" class="cart-icon">
-              🛒 <span id="cartCount">0</span>
-          </button>
-      </div>
+    <div class="logo">Logo</div>
+    <div class="placeholders">
+      <span>Placeholder 1</span>
+      <span>Placeholder 2</span>
+      <span>Placeholder 3</span>
+      <button id="cartIcon" class="cart-icon">
+        <span class="material-icons">shopping_cart</span>
+        <span id="cartCount">0</span>
+      </button>
+    </div>
   </div>
   <div class="landing-page menu-page">
-      <!-- Breadcrumb container -->
-      <div class="breadcrumb-container" style="display: flex; padding-top: 60px;">
-          <nav class="breadcrumb">
-              <a href="#/" class="breadcrumb-item">Home</a>
-              <span class="breadcrumb-separator">&gt;</span>
-              <a href="#/menus" class="breadcrumb-item">Menu</a>
-              <span class="breadcrumb-separator">&gt;</span>
-              <a href="#/checkout" class="breadcrumb-item">Checkout</a>
-          </nav>
+    <div class="content">
+      <nav class="breadcrumb">
+          <a href="#/" class="breadcrumb-item">Home</a>
+          <span class="breadcrumb-separator">&gt;</span>
+          <a href="#/menus" class="breadcrumb-item">Menu</a>
+          <span class="breadcrumb-separator">&gt;</span>
+          <a href="#/checkout" class="breadcrumb-item">Checkout</a>
+      </nav>
     </div>
-      <div class="menu-slider">
-          <button id="leftArrow" class="slider-arrow left-arrow">&lt;</button>
-          <div id="menusList" class="menus-list">
-              <!-- Menu items will be inserted here dynamically -->
-          </div>
-          <button id="rightArrow" class="slider-arrow right-arrow">&gt;</button>
-      </div>
+    <div class="menu-slider">
+        <button id="leftArrow" class="slider-arrow left-arrow">&lt;</button>
+        <div id="menusList" class="menus-list">
+            <!-- Menu items will be inserted here dynamically -->
+        </div>
+        <button id="rightArrow" class="slider-arrow right-arrow">&gt;</button>
     </div>
+  </div>
 
   <div id="overlay" class="overlay hidden"></div>
   <div id="cartDrawer" class="cart-drawer hidden">
@@ -70,6 +70,7 @@ function renderMenusPage() {
   const cartSubtotalLabel = document.getElementById('cartSubtotalLabel');
   
   let currentIndex = 0;
+  const itemsToShow = 3;
 
   // Render menu items
   menus.forEach(menu => {
@@ -120,7 +121,7 @@ function renderMenusPage() {
     const newTransformValue = -(currentIndex * 33.33);
     menusList.style.transform = `translateX(${newTransformValue}%)`;
   };
-
+  
   document.getElementById('leftArrow').addEventListener('click', () => {
     if (currentIndex > 0) {
       currentIndex -= 1;
@@ -128,14 +129,15 @@ function renderMenusPage() {
     }
   });
   
+
   document.getElementById('rightArrow').addEventListener('click', () => {
-    if (currentIndex < menus.length - 3) {
+    if (currentIndex < menus.length - itemsToShow) { 
       currentIndex += 1;
       updateSlider();
     }
   });
   
-
+  // Initial update
   updateSlider();
 
   document.getElementById('leftArrow').style.left = '-10px';

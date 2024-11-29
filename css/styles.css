@@ -331,36 +331,24 @@ body, html {
   /* ----------------------------- */
 
   /* menu page styles */
-  .menu-slider {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 90%;
-    height: 600px;
-    overflow: hidden;
-    perspective: 1200px;
-    transition: transform 0.5s ease;
-  }
-  
   .slider-arrow {
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 30px;
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     z-index: 1;
     cursor: pointer;
   }
 
   .left-arrow {
-    left: 0;
+    left: 30px !important;
   }
 
   .right-arrow {
-    right: 0;
+    right: 40px !important;
   }
 
   .landing-page.menu-page {
@@ -375,20 +363,33 @@ body, html {
     margin-bottom: 20px;
   }
 
-  .menus-list {
+  .menu-slider {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 900px;
     overflow: hidden;
-    flex: 1;
+    perspective: 1200px;
     transition: transform 0.5s ease;
   }
-
+  
+  .menus-list {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 95%;
+    flex-wrap: nowrap;
+    margin-left: 10px;
+  }
+  
   .menu-item {
     flex-shrink: 0;
     flex: 0 0 25%;
     box-sizing: border-box;
-    width: 25%;
+    width: 40%;
     height: auto;
-    margin: 100px 50px;
+    margin: 0px 50px;
     box-sizing: border-box;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -495,25 +496,44 @@ body, html {
   
   .add-to-cart {
     padding: 10px 20px;
-    border: 2px solid #4caf50;
-    border-radius: 5px;
-    background-color: white;
-    color: #4caf50;
+    border: none !important;
+    border-radius: 25px;
+    background-color: #538373 !important;
+    color: white !important;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
   }
   
   .add-to-cart:hover {
-    background-color: #4caf50;
+    background-color:  #2A695C !important;
     color: white;
   }
 
   .cart-icon {
-    margin-left: 10px;
     cursor: pointer;
     background: none;
     border: none;
-    font-size: 1.2em;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    height: 100%;
+  }
+
+  #cartCount {
+    position: absolute;
+    top: 5px;
+    right: 50px;
+    background-color: #538373;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    min-width: 5px;
+    text-align: center;
+    z-index: 1;
   }
   
   .cart-drawer {
@@ -589,7 +609,7 @@ body, html {
 
   .cart-close-button {
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: 10px;
     background: none;
     border: none;
@@ -720,12 +740,6 @@ body, html {
     background-color: #2A695C;
     transform: scale(1.05);
   }
-
-
-
-
-
-
 
   .checkoutItems {
     width: 35%;

@@ -1,45 +1,48 @@
 function renderAllMenusPage() {
-    const app = document.getElementById('app');
-    app.innerHTML = `
-    <div class="navbar">
-        <div class="logo">Logo</div>
-        <div class="placeholders">
-            <a href="#/allmenus" class="menu-button">MENU</a>
-            <span>Placeholder 2</span>
-            <span>Placeholder 3</span>
-            <button id="cartIcon" class="cart-icon">
-                🛒 <span id="cartCount">0</span>
-            </button>
-        </div>
+  const app = document.getElementById('app');
+  app.innerHTML = `
+  <div class="navbar">
+    <div class="logo">Logo</div>
+    <div class="placeholders">
+      <a href="#/allmenus" class="menu-button">MENU</a>
+      <span>Placeholder 2</span>
+      <span>Placeholder 3</span>
+      <button id="cartIcon" class="cart-icon">
+        <span class="material-icons">shopping_cart</span>
+        <span id="cartCount">0</span>
+      </button>
     </div>
-    <div class="landing-page menu-page">
-        <div class="menu-slider">
-            <button id="leftArrow" class="slider-arrow left-arrow">&lt;</button>
-            <div id="menusList" class="menus-list">
-                <!-- Menu items will be inserted here dynamically -->
-            </div>
-            <button id="rightArrow" class="slider-arrow right-arrow">&gt;</button>
+  </div>
+  <div class="landing-page menu-page">
+    <div class="content">
+    </div>
+    <div class="menu-slider">
+        <button id="leftArrow" class="slider-arrow left-arrow">&lt;</button>
+        <div id="menusList" class="menus-list">
+            <!-- Menu items will be inserted here dynamically -->
         </div>
+        <button id="rightArrow" class="slider-arrow right-arrow">&gt;</button>
+    </div>
+  </div>
+
+  <div id="overlay" class="overlay hidden"></div>
+  <div id="cartDrawer" class="cart-drawer hidden">
+      <div class="cart-close-button-container">
+          <button class="cart-close-button">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                  <path d="M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12l-6.293 6.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z"/>
+              </svg>
+          </button>
+          <button id="clearCartButton" class="clear-cart-button">Clear Cart</button>
       </div>
-  
-    <div id="overlay" class="overlay hidden"></div>
-    <div id="cartDrawer" class="cart-drawer hidden">
-        <div class="cart-close-button-container">
-            <button class="cart-close-button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path d="M19.707 4.293a1 1 0 0 0-1.414 0L12 10.586 5.707 4.293a1 1 0 0 0-1.414 1.414L10.586 12l-6.293 6.293a1 1 0 0 0 1.414 1.414L12 13.414l6.293 6.293a1 1 0 0 0 1.414-1.414L13.414 12l6.293-6.293a1 1 0 0 0 0-1.414z"/>
-                </svg>
-            </button>
-            <button id="clearCartButton" class="clear-cart-button">Clear Cart</button>
-        </div>
-        <div id="cartItems"></div>
-        <div class="subtotal">
-            <strong id="cartSubtotalLabel">Subtotal:</strong> 
-            <span id="cartSubtotal">0.00</span>
-        </div>
-        <a href="#/checkout" class="button checkoutButton">CHECKOUT</a>
-    </div>
-  `;
+      <div id="cartItems"></div>
+      <div class="subtotal">
+          <strong id="cartSubtotalLabel">Subtotal:</strong> 
+          <span id="cartSubtotal">0.00</span>
+      </div>
+      <a href="#/checkout" class="button checkoutButton">CHECKOUT</a>
+  </div>
+`;
   
     const menus = [
       { name: "Hamburger Street ", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
