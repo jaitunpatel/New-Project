@@ -742,6 +742,8 @@ body, html {
   }
 
   .checkoutItems {
+    margin-top: -20px;
+    height: 89%;
     width: 35%;
     background-color: #f9f9f9;
     border-radius: 8px;
@@ -776,7 +778,7 @@ body, html {
 
   .checkoutPageButton {
     margin-top: 50px;
-    margin-left: 30px;
+    margin-left: -179px;
     background-color: #538373;
     color: white;
     font-weight: 600;
@@ -800,20 +802,22 @@ body, html {
     transform: scale(1.05);
   }
 
-
   
 
   /* last page */
   .checkout-page-wrapper {
+    
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
+    height: 100%;
     margin: 0 auto;
     padding: 20px;
   }
 
   
   .checkoutContainer {
+    margin-top: -20px !important;
+    height: 85%;
     width: 60%;
     background-color: #fff;
     border-radius: 8px;
@@ -826,9 +830,11 @@ body, html {
     flex-wrap: wrap;
     gap: 20px;
   }
+  
   .col-50 {
     float: left;
-    width: 20%;
+    width: 35%;
+    height: 50% !important;
     margin: 0 auto;
     padding: 0 16px;
   }
@@ -862,23 +868,27 @@ body, html {
     display: flex;
     justify-content: flex-start;
   }
+
   .breadcrumb {
     display: flex;
-    top: 60px;
+    top: 0px !important;
     left: 40px;
-    align-items: center;
+    align-items: left;
     padding: 10px 20px;
     font-size: 14px;
     padding: 10px;
     background-color: transparent;
     margin-left: 40px;
+    line-height: 1.5;
+    font-size: 19px;
   }
   
   .breadcrumb-item {
     text-decoration: none;
-    color: #007bff;
+    color: #538373;
     margin: 0 10px;
     font-weight: bold;
+    text-decoration: none;
   }
   
   .breadcrumb-item:hover {
@@ -893,4 +903,80 @@ body, html {
   .breadcrumb-separator {
     margin: 0 5px;
     color: #666;
+  }
+
+  /*-------------------------------*/
+
+  .menu-page-container {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-page-container h2 {
+    margin-bottom: 20px;
+  }
+
+  .menu-page-container .breadcrumb {
+    margin-left: -305px;
+    margin-top: -30px;
+  }
+
+  .menu-page-container .breadcrumb-item {
+    text-decoration: none;
+    color: #538373;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+  
+  .menu-page-container .breadcrumb-item:hover {
+    text-decoration: underline;
+  }
+  
+  .menu-page-container .breadcrumb-item.active {
+    font-weight: bold;
+    pointer-events: none;
+  }
+  
+  .menu-page-container .breadcrumb-separator {
+    margin: 0 5px;
+    color: #666;
+  }
+
+  .menu-page-container .breadcrumb-item.current-page {
+    color: #999;
+  }
+
+  /*-------------------------------*/
+
+  .checkout-container .breadcrumb {
+    margin-left: 42px;
+    margin-top: 10px;
+  }
+
+  .checkout-container .breadcrumb-item {
+    text-decoration: none;
+    color: #538373;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+  
+  .checkout-container .breadcrumb-item:hover {
+    text-decoration: underline;
+  }
+  
+  .checkout-container .breadcrumb-item.active {
+    font-weight: bold;
+    pointer-events: none;
+  }
+  
+  .checkout-container .breadcrumb-separator {
+    margin: 0 5px;
+    color: #666;
+  }
+
+  .checkout-container .breadcrumb-item.current-page {
+    color: #999;
   }

@@ -11,13 +11,6 @@ function renderLandingPage() {
     </div>
     <div class="landing-page">
       <div class="content">
-        <nav class="breadcrumb">
-          <a href="#/" class="breadcrumb-item">Home</a>
-          <span class="breadcrumb-separator">&gt;</span>
-          <a href="#/menus" class="breadcrumb-item">Menu</a>
-          <span class="breadcrumb-separator">&gt;</span>
-          <a href="#/checkout" class="breadcrumb-item">Checkout</a>
-        </nav>
         <h1>Delight in Every Bite – Your Perfect Meal, Just Moments Away!</h1>
         <p>Customize your order with our unique sliders!</p>
         <a href="#/restrictions" class="beginButton" id="beginButton">BEGIN</a>
