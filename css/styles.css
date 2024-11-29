@@ -1359,3 +1359,23 @@ body, html {
   input[class="super-sad"]:focus + svg {
     fill: rgb(239, 42, 16);
   }
+
+  .rating-form-1 {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .rating-form-2 {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .rating-form-3 {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .rating-form-4 {
+    display: flex;
+    flex-direction: row;
+  }
