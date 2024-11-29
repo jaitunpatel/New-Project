@@ -4,7 +4,7 @@ function renderMenusPage() {
   
   app.innerHTML = `
     <div class="navbar">
-      <div class="logo">Logo</div>
+      <div class="logo">FILTER FEAST</div>
       <div class="placeholders">
         <a href="#/allmenus" class="menu-button">MENU</a>
         <a href="#/offers" class="menu-button">OFFERS</a>
