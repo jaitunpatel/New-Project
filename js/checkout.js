@@ -1,6 +1,6 @@
 function renderCheckoutPage() {
     const app = document.getElementById('app');
-    const currentPage = window.location.hash; // Get the current page from the URL hash
+    const currentPage = window.location.hash;
     app.innerHTML = `
         <div class="navbar">
             <div class="logo">Logo</div>
@@ -34,7 +34,6 @@ function renderCheckoutPage() {
                             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
                             <label for="city"><i class="fa fa-institution"></i> City</label>
                             <input type="text" id="city" name="city" placeholder="Winnipeg">
-
                         </div>
                         <div class="col-50">
                             <h3>Payment</h3>
@@ -68,8 +67,24 @@ function renderCheckoutPage() {
                     </div>
 
                     <!-- Place Order Button -->
-                    <div class='checkoutPageButton'>PLACE ORDER</div>
+                    <div class='checkoutPageButton' id="placeOrderButton">PLACE ORDER</div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Checkout Modal (Initially hidden) -->
+        <div class="checkout-modal" id="checkoutModal">
+            <div class="checkout-modal-content">
+                <!-- Close Button (X) -->
+                <button class="close-button" id="closeModalButton">
+                    <!-- X Icon (SVG) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M19 6L6 19M6 6l13 13" stroke="#5f6368" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <h2>Thank you for ordering!</h2>
+                <p>Your order has been placed successfully. We will contact you shortly.</p>
             </div>
         </div>
     `;
@@ -83,7 +98,6 @@ function renderCheckoutPage() {
     const cartItemsElement = document.getElementById('cartItems');
     cartItemsElement.innerHTML = '';
     cartItems.forEach(item => {
-    
         subtotal += item.price * item.quantity;
         const cartItem = document.createElement('div');
         cartItem.classList.add('cart-item');
@@ -97,5 +111,17 @@ function renderCheckoutPage() {
         cartItemsElement.appendChild(cartItem);
         cartSubtotalLabel.innerHTML = '<strong>Subtotal:</strong>';
         cartSubtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+    });
+
+    const placeOrderButton = document.getElementById('placeOrderButton');
+    const checkoutModal = document.getElementById('checkoutModal');
+    const closeModalButton = document.getElementById('closeModalButton');
+
+    placeOrderButton.addEventListener('click', () => {
+        checkoutModal.style.display = 'block';
+    });
+
+    closeModalButton.addEventListener('click', () => {
+        checkoutModal.style.display = 'none';
     });
 }

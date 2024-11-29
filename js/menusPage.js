@@ -183,11 +183,13 @@ function renderMenusPage() {
       const cartItem = document.createElement('div');
       cartItem.classList.add('cart-item');
       cartItem.innerHTML = `
-        <span>${item.name}</span>
-        <div class="cart-item-quantity">
-          <button class="decrease-quantity">-</button>
-          <span class="quantity">${item.quantity}</span>
-          <button class="increase-quantity">+</button>
+        <div class="cart-item-info">
+          <span>${item.name}</span>
+          <div class="quantity-controls">
+            <button class="decrease-quantity">-</button>
+            <span class="quantity">${item.quantity}</span>
+            <button class="increase-quantity">+</button>
+          </div>
         </div>
         <span>$${(item.price * item.quantity).toFixed(2)}</span>
       `;
