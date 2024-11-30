@@ -1306,12 +1306,6 @@ body, html {
     margin: 0.2rem;
   }
   
-  .rating-form-2 svg {
-    height: 3rem;
-    width: 3rem;
-    margin: 0.5rem;
-  }
-  
   #radios label {
     position: relative;
   }
