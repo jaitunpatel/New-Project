@@ -298,18 +298,141 @@ function renderMenusPage() {
       modal.style.display = 'none';
     });
   });
-  
 
   const menus = [
-    { name: "Hamburger Street ", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
-    { name: "Poke bowl", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
-    { name: "Bowl", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
-    { name: "Indian", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
-    { name: "Chinese", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
-    { name: "Ham Fast Food ", description: "$8.53", image: "https://via.placeholder.com/150", rating: 4.5, price: 8.53 },
+    {
+      name: "Hamburger Street",
+      description: "$8.53",
+      image: "https://via.placeholder.com/150",
+      rating: 4.5,
+      price: 8.53,
+      portionSize: 10,
+      calories: 350,
+      restrictions: {
+        dietary: ['vegan'],
+        religious: [],
+        meats: ['noBeef', 'noChicken']
+      }
+    },
+    {
+      name: "Poke bowl",
+      description: "$12.00",
+      image: "https://via.placeholder.com/150",
+      rating: 4.5,
+      price: 12.00,
+      portionSize: 12,
+      calories: 500,
+      restrictions: {
+        dietary: ['vegetarian'],
+        religious: [],
+        meats: ['noPork', 'noBeef']
+      }
+    },
+    {
+      name: "Bowl",
+      description: "$8.00",
+      image: "https://via.placeholder.com/150",
+      rating: 4.5,
+      price: 8.00,
+      portionSize: 8,
+      calories: 200,
+      restrictions: {
+        dietary: ['dairyFree'],
+        religious: [],
+        meats: ['noSeafood']
+      }
+    },
+    {
+      name: "Indian Delight",
+      description: "$10.00",
+      image: "https://via.placeholder.com/150",
+      rating: 4.5,
+      price: 10.00,
+      portionSize: 15,
+      calories: 450,
+      restrictions: {
+        dietary: ['vegetarian'],
+        religious: ['halal'],
+        meats: ['noPork']
+      }
+    },
+    {
+      name: "Chinese Special",
+      description: "$15.00",
+      image: "https://via.placeholder.com/150",
+      rating: 4.5,
+      price: 15.00,
+      portionSize: 20,
+      calories: 600,
+      restrictions: {
+        dietary: ['glutenFree'],
+        religious: [],
+        meats: ['noChicken']
+      }
+    },
+    {
+      name: "Ham Fast Food",
+      description: "$18.00",
+      image: "https://via.placeholder.com/150",
+      rating: 4.5,
+      price: 18.00,
+      portionSize: 18,
+      calories: 700,
+      restrictions: {
+        dietary: ['vegetarian'],
+        religious: ['kosher'],
+        meats: ['noBeef']
+      }
+    }
   ];
+  
 
+  const selectedDietaryRestrictions = JSON.parse(localStorage.getItem('selectedDietaryRestrictions')) || [];
+  const priceRangeValues = JSON.parse(localStorage.getItem('priceRangeValues')) || [];
+  const portionSizeValues = JSON.parse(localStorage.getItem('portionSizeValues')) || [];
+  const calorieRangeValues = JSON.parse(localStorage.getItem('calorieRangeValues')) || [];
+  
+
+  const priceRangeValuesNumeric = priceRangeValues.map(value => parseFloat(value.replace('$', '').trim()));
+  const portionSizeValuesNumeric = portionSizeValues.map(value => parseFloat(value.replace('oz', '').trim()));
+  const calorieRangeValuesNumeric = calorieRangeValues.map(value => parseInt(value.replace('cal', '').trim()));
+
+
+  console.log('Selected Dietary Restrictions:', selectedDietaryRestrictions);
+  console.log('Price Range Values:', priceRangeValues);
+  console.log('Portion Size Values:', portionSizeValues);
+  console.log('Calorie Range Values:', calorieRangeValues);
+
+  function filterMenus(menus) {
+    return menus.filter(menu => {
+      const dietaryMatch = selectedDietaryRestrictions.length === 0 || selectedDietaryRestrictions.some(restriction =>
+        menu.restrictions.dietary.includes(restriction) ||
+        menu.restrictions.religious.includes(restriction) ||
+        menu.restrictions.meats.includes(restriction)
+      );
+  
+      const priceMatch = priceRangeValuesNumeric.length === 0 || (menu.price >= priceRangeValuesNumeric[0] && menu.price <= priceRangeValuesNumeric[1]);
+      const portionSizeMatch = portionSizeValuesNumeric.length === 0 || (menu.portionSize >= portionSizeValuesNumeric[0] && menu.portionSize <= portionSizeValuesNumeric[1]);
+      const calorieMatch = calorieRangeValuesNumeric.length === 0 || (menu.calories >= calorieRangeValuesNumeric[0] && menu.calories <= calorieRangeValuesNumeric[1]);
+  
+      return dietaryMatch && priceMatch && portionSizeMatch && calorieMatch;
+    });
+  }
+
+  const filteredMenus = filterMenus(menus);
+  console.log('Filtered Menus:', filteredMenus);
+  
   const menusList = document.getElementById('menusList');
+  menusList.innerHTML = '';
+  
+  if (filteredMenus.length === 0) {
+    menusList.innerHTML = `
+      <div class="no-results-message">
+        <p>Sorry, there are no menu items available based on your current selection.</p>
+      </div>
+    `;
+  }
+
   let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
   const cartCountElement = document.getElementById('cartCount');
   const cartSubtotalElement = document.getElementById('cartSubtotal');
@@ -321,44 +444,45 @@ function renderMenusPage() {
   let currentIndex = 0;
   const itemsToShow = 3;
 
-  // Render menu items
-  menus.forEach(menu => {
-    const menuItem = document.createElement('div');
-    menuItem.classList.add('menu-item');
-    menuItem.innerHTML = `
-      <div class="menu-card">
-        <div class="menu-header">
-          <div class="menu-image">
-            <img src="${menu.image}" alt="${menu.name}">
-          </div>
-          <div class="menu-rating">
-            <span class="star">⭐</span>
-            <span>${menu.rating}</span>
-          </div>
+ 
+filteredMenus.forEach(menu => {
+  const menuItem = document.createElement('div');
+  menuItem.classList.add('menu-item');
+  menuItem.innerHTML = `
+    <div class="menu-card">
+      <div class="menu-header">
+        <div class="menu-image">
+          <img src="${menu.image}" alt="${menu.name}">
         </div>
-        <div class="menu-info">
-          <h3>${menu.name}</h3>
-          <p>${menu.description}</p>
-          <button class="add-to-cart">Add To Cart</button>
+        <div class="menu-rating">
+          <span class="star">⭐</span>
+          <span>${menu.rating}</span>
         </div>
       </div>
-    `;
-    menusList.appendChild(menuItem);
+      <div class="menu-info">
+        <h3>${menu.name}</h3>
+        <p>${menu.description}</p>
+        <button class="add-to-cart">Add To Cart</button>
+      </div>
+    </div>
+  `;
+  menusList.appendChild(menuItem);
 
-    const addToCartButton = menuItem.querySelector('.add-to-cart');
-    addToCartButton.addEventListener('click', () => {
-      const itemInCart = cartItems.find(item => item.name === menu.name);
+  // Add to cart functionality
+  const addToCartButton = menuItem.querySelector('.add-to-cart');
+  addToCartButton.addEventListener('click', () => {
+    const itemInCart = cartItems.find(item => item.name === menu.name);
 
-      if (itemInCart) {
-        itemInCart.quantity += 1;
-      } else {
-        cartItems.push({ ...menu, quantity: 1 });
-      }
+    if (itemInCart) {
+      itemInCart.quantity += 1;
+    } else {
+      cartItems.push({ ...menu, quantity: 1 });
+    }
 
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      updateCart();
-    });
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    updateCart();
   });
+});
 
   const checkOutButton = document.querySelector('.checkoutButton');
   checkOutButton.addEventListener('click', function(event) {
@@ -386,7 +510,6 @@ function renderMenusPage() {
     }
   });
   
-  // Initial update
   updateSlider();
 
   document.getElementById('leftArrow').style.left = '-10px';

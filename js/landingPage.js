@@ -254,7 +254,6 @@ function renderLandingPage() {
 
     </div>
 
-
   `;
 
   const beginButton = document.getElementById('beginButton');
@@ -335,6 +334,7 @@ function loadRestrictionsPageContent() {
     ]
   };
 
+  // Create checkboxes dynamically
   function createCheckboxes(category) {
     return category.map(item => {
       const disables = item.disables ? item.disables.join(',') : '';
@@ -348,6 +348,7 @@ function loadRestrictionsPageContent() {
     }).join('');
   }
 
+  // Inject HTML content for checkboxes
   modalContent.innerHTML = `
     <div class="restrictions-page">
       <h3>Dietary Preferences</h3>
@@ -377,25 +378,34 @@ function loadRestrictionsPageContent() {
   });
 
   function loadSelectedCheckboxes() {
-    Object.keys(localStorage).forEach(key => {
-      const checkbox = document.getElementById(key);
+    const selectedRestrictions = JSON.parse(localStorage.getItem('selectedDietaryRestrictions')) || [];
+  
+    selectedRestrictions.forEach(id => {
+      const checkbox = document.getElementById(id);
       if (checkbox) {
-        checkbox.checked = JSON.parse(localStorage.getItem(key));
+        checkbox.checked = true;
       }
     });
   }
 
   function saveCheckboxState(event) {
     const checkboxId = event.target.id;
-    const checked = event.target.checked;
-    localStorage.setItem(checkboxId, JSON.stringify(checked));
+    let selectedRestrictions = JSON.parse(localStorage.getItem('selectedDietaryRestrictions')) || [];
+  
+    if (event.target.checked) {
+      selectedRestrictions.push(checkboxId);
+    } else {
+      selectedRestrictions = selectedRestrictions.filter(id => id !== checkboxId);
+    }
+  
+    localStorage.setItem('selectedDietaryRestrictions', JSON.stringify(selectedRestrictions));
   }
+
+  loadSelectedCheckboxes();
 
   document.querySelectorAll('.restriction-checkbox').forEach(checkbox => {
     checkbox.addEventListener('change', saveCheckboxState);
   });
-
-  loadSelectedCheckboxes();
 
   document.querySelectorAll('.restriction-checkbox').forEach(checkbox => {
     checkbox.addEventListener('change', function(event) {
@@ -472,15 +482,13 @@ function loadFiltersPageContent() {
     </div>
   `;
 
-  // Add event listener to the back button
   const backButton = document.getElementById('backButton');
   backButton.addEventListener('click', loadRestrictionsPageContent);
 
-  // Add event listener to the reset button
   const resetButton = document.getElementById('resetButton');
   resetButton.addEventListener('click', resetFilters);
 
-  // Initialize noUiSliders with localStorage values
+
   initializeRangeSlider('priceRange', 0, 100, [0, 100], 'priceValue', '$', 'priceRangeValues');
   initializeRangeSlider('calorieRange', 0, 1000, [0, 1000], 'calorieValue', ' cal', 'calorieRangeValues');
   initializeRangeSlider('portionSize', 0, 20, [0, 20], 'portionValue', ' oz', 'portionSizeValues');
@@ -490,7 +498,6 @@ function initializeRangeSlider(id, min, max, start, valueElementId, unit, storag
   const slider = document.getElementById(id);
   const valueElement = document.getElementById(valueElementId);
 
-  // Load saved values from localStorage if available
   const savedValues = localStorage.getItem(storageKey);
   const initialValues = savedValues ? JSON.parse(savedValues) : start;
 
